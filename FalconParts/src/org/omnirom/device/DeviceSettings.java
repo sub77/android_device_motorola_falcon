@@ -20,36 +20,37 @@ package org.omnirom.device;
 import android.content.res.Resources;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.TwoStatePreference;
+import android.provider.Settings;
+import android.view.MenuItem;
+import android.util.Log;
 
-public class DeviceSettings extends PreferenceActivity  {
+public class DeviceSettings extends PreferenceActivity implements
+        Preference.OnPreferenceChangeListener {
 
-    public static final String KEY_DOUBLE_TAP_SWITCH = "double_tap";
     public static final String KEY_CAMERA_SWITCH = "camera";
     public static final String KEY_TORCH_SWITCH = "torch";
     public static final String KEY_VIBSTRENGTH = "vib_strength";
     public static final String KEY_OCLICK_CATEGORY = "oclick_category";
     public static final String KEY_OCLICK = "oclick";
+    public static final String KEY_BACK_BUTTON = "back_button";
+    public static final String KEY_BUTTON_CATEGORY = "button_category";
 
-    //private TwoStatePreference mDoubleTapSwitch;
     private TwoStatePreference mTorchSwitch;
     private TwoStatePreference mCameraSwitch;
     private VibratorStrengthPreference mVibratorStrength;
     private Preference mOClickPreference;
+    private ListPreference mBackButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.main);
-
-        /*mDoubleTapSwitch = (TwoStatePreference) findPreference(KEY_DOUBLE_TAP_SWITCH);
-        mDoubleTapSwitch.setEnabled(DoubleTapSwitch.isSupported());
-        mDoubleTapSwitch.setChecked(DoubleTapSwitch.isEnabled(this));
-        mDoubleTapSwitch.setOnPreferenceChangeListener(new DoubleTapSwitch());*/
 
         mTorchSwitch = (TwoStatePreference) findPreference(KEY_TORCH_SWITCH);
         mTorchSwitch.setEnabled(TorchGestureSwitch.isSupported());
@@ -70,21 +71,33 @@ public class DeviceSettings extends PreferenceActivity  {
             getPreferenceScreen().removePreference(oclickCategory);
         }
         mOClickPreference = (Preference) findPreference(KEY_OCLICK);
+
+        PreferenceCategory buttonCategory = (PreferenceCategory) findPreference(KEY_BUTTON_CATEGORY);
+        mBackButton = (ListPreference) findPreference(KEY_BACK_BUTTON);
+        final boolean backButtonEnabled = getResources().getBoolean(R.bool.config_has_back_button);
+        if (!backButtonEnabled) {
+            getPreferenceScreen().removePreference(buttonCategory);
+        }
+        mBackButton.setOnPreferenceChangeListener(this);
+        int keyCode = Settings.System.getInt(getContentResolver(),
+                    Settings.System.BUTTON_EXTRA_KEY_MAPPING, 0);
+        if (keyCode != 0) {
+            int valueIndex = mBackButton.findIndexOfValue(String.valueOf(keyCode));
+            mBackButton.setValueIndex(valueIndex);
+            mBackButton.setSummary(mBackButton.getEntries()[valueIndex]);
+        }
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            finish();
+            return true;
+        default:
+            break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -95,5 +108,18 @@ public class DeviceSettings extends PreferenceActivity  {
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mBackButton) {
+            String value = (String) newValue;
+            int keyCode = Integer.valueOf(value);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.BUTTON_EXTRA_KEY_MAPPING, keyCode);
+            int valueIndex = mBackButton.findIndexOfValue(value);
+            mBackButton.setSummary(mBackButton.getEntries()[valueIndex]);
+         }
+        return true;
     }
 }
