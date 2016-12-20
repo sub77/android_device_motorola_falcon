@@ -1,8 +1,8 @@
 [
   {
-    "remote": "omnirom",
-    "repository": "android_device_oppo_msm8974-common",
-    "target_path": "device/oppo/msm8974-common",
+    "remote": "github",
+    "repository": "sub77/android_device_motorola_msm8226-common",
+    "target_path": "device/motorola/msm8226-common",
     "revision": "android-7.1"
   }
 ]

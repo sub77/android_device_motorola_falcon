@@ -3,38 +3,34 @@
 #
 # Everything in this directory will become public
 
-# Include common makefile
-$(call inherit-product, device/oppo/msm8974-common/common.mk)
+# call the proprietary setup
+$(call inherit-product, vendor/motorola/falcon/falcon-vendor.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
-LOCAL_PATH := device/oppo/find7op
+LOCAL_PATH := device/motorola/falcon
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# Ramdisk
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/init.find7op.rc:root/init.qcom.rc \
-    $(LOCAL_PATH)/configs/fstab.find7op:root/fstab.qcom \
-    $(LOCAL_PATH)/configs/twrp.fstab:recovery/root/etc/twrp.fstab
-
-# device specific packages
+# Device specific packages
 PRODUCT_PACKAGES += \
-    NfcNci \
-    nfc_nci.find7op \
     SnapdragonCamera
 
+# Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
-    $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
+    $(LOCAL_PATH)/configs/init.target.rc:root/init.target.rc \
+    $(LOCAL_PATH)/configs/fstab.qcom:root/fstab.qcom \
+    $(LOCAL_PATH)/configs/twrp.fstab:recovery/root/etc/twrp.fstab
 
-# Sensor configuration from Oppo
+# Release tools CDMA APN list
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sensor/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf
+    $(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml \
+    $(LOCAL_PATH)/configs/apns-conf-cdma.xml:system/etc/apns-conf-cdma.xml
 
-# Properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=480 \
-    persist.camera.4k2k.enable=1 \
-    ro.qti.sensors.ir_proximity=true
+# Wifi
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+
+# Include common makefile
+$(call inherit-product, device/motorola/msm8226-common/common.mk)

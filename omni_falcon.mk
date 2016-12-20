@@ -28,32 +28,26 @@ $(call inherit-product, vendor/omni/config/gsm.mk)
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# must be before including omni part
-TARGET_BOOTANIMATION_SIZE := 1080x608
+# Bootanimation size
+TARGET_BOOTANIMATION_SIZE := 720x407
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/oppo/find7op/device.mk)
+$(call inherit-product, device/motorola/falcon/device.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := omni_find7op
-PRODUCT_DEVICE := find7op
-PRODUCT_BRAND := OnePlus
-PRODUCT_MODEL := A0001
-PRODUCT_MANUFACTURER := OnePlus
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_PRODUCT=FIND7OP \
-    TARGET_DEVICE=A0001 \
-    BUILD_FINGERPRINT="4.3/JLS36C/1390465867:user/release-keys" \
-    PRIVATE_BUILD_DESC="msm8974-user 4.3 JLS36C eng.root.20140510.152835 release-keys"
+PRODUCT_DEVICE := falcon
+PRODUCT_NAME := omni_falcon
+PRODUCT_RELEASE_NAME := MOTO G
+PRODUCT_BRAND := motorola
+PRODUCT_MODEL := falcon
+PRODUCT_MANUFACTURER := motorola
 
 # Inline kernel
-TARGET_KERNEL_SOURCE := kernel/oppo/msm8974
-TARGET_KERNEL_CONFIG := msm8974_find7op_defconfig
+TARGET_KERNEL_SOURCE := kernel/motorola/msm8226
+TARGET_KERNEL_CONFIG := falcon_defconfig
 
 # Inherit from proprietary blobs
-$(call inherit-product, vendor/oppo/find7a/find7a-vendor.mk)
-
+$(call inherit-product, vendor/motorola/falcon/falcon-vendor.mk)

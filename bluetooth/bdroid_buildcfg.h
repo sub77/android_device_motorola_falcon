@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2016 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +18,14 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "OnePlus One"
-#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
-
+#define BTM_DEF_LOCAL_NAME   "Moto G"
+#define BLUETOOTH_QTI_SW TRUE
+// Disables read remote device feature
+#define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
 #define MAX_L2CAP_CHANNELS    16
-#define BT_CLEAN_TURN_ON_DISABLED 1
+// skips conn update at conn completion
+#define BTA_BLE_SKIP_CONN_UPD  FALSE
 
 /* Defined if the kernel does not have support for CLOCK_BOOTTIME_ALARM */
 #define KERNEL_MISSING_CLOCK_BOOTTIME_ALARM TRUE
-
 #endif
