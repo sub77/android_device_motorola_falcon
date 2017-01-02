@@ -6,8 +6,7 @@
 # call the proprietary setup
 $(call inherit-product, vendor/motorola/falcon/falcon-vendor.mk)
 
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 LOCAL_PATH := device/motorola/falcon
 
