@@ -34,5 +34,9 @@ RECOVERY_SDCARD_ON_DATA := true
 # Release tools
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 
+# RIL
+BOARD_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_11
+BOARD_GLOBAL_CPPFLAGS += -DUSE_RIL_VERSION_11
+
 # inherit from the proprietary version
 -include vendor/motorola/falcon/BoardConfigVendor.mk
