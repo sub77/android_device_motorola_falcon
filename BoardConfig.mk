@@ -3,6 +3,14 @@
 
 LOCAL_PATH := device/motorola/falcon
 
+# Clang
+ifneq ($(HOST_OS),darwin)
+SDCLANG := true
+SDCLANG_PATH := prebuilts/clang/linux-x86/host/sdclang-3.8/bin
+SDCLANG_LTO_DEFS := device/motorola/falcon/sdllvm-lto-defs.mk
+
+endif
+
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := falcon
 TARGET_OTA_ASSERT_DEVICE := xt1031,xt1032,xt1033,xt1034,falcon_umts,falcon_umtsds,falcon_cdma,falcon_retuaws,falcon,falcon_gpe
