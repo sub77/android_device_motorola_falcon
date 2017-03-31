@@ -10,11 +10,5 @@
     "repository": "sub77/proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
     "revision": "android-7.1"
-  },
-  {
-    "remote": "github",
-    "repository": "sub77/android_vendor_qcom_binaries",
-    "target_path": "vendor/qcom/binaries",
-    "revision": "android-7.1"
   }
 ]
