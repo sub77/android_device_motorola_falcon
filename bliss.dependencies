@@ -1,0 +1,14 @@
+[
+  {
+    "remote":      "github",
+    "repository":  "sub77/android_device_motorola_msm8226-common",
+    "target_path": "device/motorola/msm8226-common",
+    "revision":    "n7.1-caf"
+  },
+  {
+    "remote":      "github",
+    "repository":  "sub77/android_kernel_motorola_msm8226",
+    "target_path": "kernel/motorola/msm8226",
+    "revision":    "n7.1-caf"
+  }
+]

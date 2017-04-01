@@ -1,0 +1,3 @@
+# Specific device info (Bliss building)
+ro.product.model=MOTOROLA
+ro.product.device=falcon
