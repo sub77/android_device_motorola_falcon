@@ -1,0 +1,4 @@
+# This file gets copied as /init.falcon.diag.rc
+
+on boot
+    rm /dev/diag

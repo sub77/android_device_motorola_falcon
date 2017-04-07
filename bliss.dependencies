@@ -1,0 +1,14 @@
+[
+ {
+   "remote": "BlissRoms-Kernels",
+   "repository": "android_kernel_motorola_falcon",
+   "target_path": "kernel/motorola/falcon",
+   "revision": "n7.1"
+ },
+ {
+   "remote": "BlissRoms-Vendor",
+   "repository": "proprietary_vendor_motorola_falcon",
+   "target_path": "vendor/motorola/falcon",
+   "revision": "n7.1"
+ }
+]
