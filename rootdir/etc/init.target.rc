@@ -46,6 +46,16 @@ on boot
     chown system system /sys/module/ct406/parameters/als_delay
     chmod 0660 /sys/module/ct406/parameters/als_delay
 
+    # FalconParts
+    chown system system /proc/touchpanel/camera_enable
+    chmod 0640 /proc/touchpanel/camera_enable
+    chown system system /proc/touchpanel/flashlight_enable
+    chmod 0640 /proc/touchpanel/flashlight_enable
+    chown system system /proc/touchpanel/double_tap_enable
+    chmod 0640 /proc/touchpanel/double_tap_enable
+    chown system system /proc/touchpanel/keypad_enable
+    chmod 0640 /proc/touchpanel/keypad_enable
+
 # Services start here
 
 service akmd8963 /system/bin/akmd8963
