@@ -14,7 +14,6 @@ TARGET_BOARD_INFO_FILE := $(LOCAL_PATH)/board-info.txt
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_falcon
 TARGET_RECOVERY_DEVICE_MODULES := libinit_falcon
-TARGET_UNIFIED_DEVICE := true
 
 # Configure jemalloc for low-memory
 MALLOC_SVELTE := true
