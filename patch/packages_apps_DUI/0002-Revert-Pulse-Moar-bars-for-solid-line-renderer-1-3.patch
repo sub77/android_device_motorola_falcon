@@ -1,0 +1,130 @@
+From c47d9452d186a6bcbe209fb38eed98632351c5b1 Mon Sep 17 00:00:00 2001
+From: sub77 <sub77@ymail.com>
+Date: Sat, 8 Jul 2017 11:33:09 +0000
+Subject: [PATCH 2/2] Revert "Pulse: Moar bars for solid line renderer [1/3]"
+
+This reverts commit 7364612cfaed78ecc2e328c6e2f9bfd064466ce9.
+---
+ .../navigation/pulse/SolidLineRenderer.java        | 47 ++++++----------------
+ 1 file changed, 13 insertions(+), 34 deletions(-)
+
+diff --git a/src/com/android/systemui/navigation/pulse/SolidLineRenderer.java b/src/com/android/systemui/navigation/pulse/SolidLineRenderer.java
+index 3388fd8..611df50 100644
+--- a/src/com/android/systemui/navigation/pulse/SolidLineRenderer.java
++++ b/src/com/android/systemui/navigation/pulse/SolidLineRenderer.java
+@@ -52,7 +52,7 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
+     private float mDbFuzzFactor;
+     private boolean mVertical;
+     private boolean mLeftInLandscape;
+-    private int mWidth, mHeight, mUnits;
++    private int mWidth, mHeight;
+ 
+     private boolean mIsValidStream;
+     private boolean mLavaLampEnabled;
+@@ -70,9 +70,10 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
+         mFadePaint = new Paint();
+         mFadePaint.setXfermode(new PorterDuffXfermode(Mode.MULTIPLY));
+         mDbFuzzFactor = 5f;
++        mFFTPoints = new float[128];
++        loadValueAnimators();
+         mObserver = new CMRendererObserver(handler);
+         mObserver.updateSettings();
+-        loadValueAnimators();
+     }
+ 
+     @Override
+@@ -85,13 +86,13 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
+ 
+     private void loadValueAnimators() {
+         if (mValueAnimators != null) {
+-            for (int i = 0; i < mValueAnimators.length; i++) {
++            for (int i = 0; i < 32; i++) {
+                 mValueAnimators[i].cancel();
+             }
+         }
+-        mValueAnimators = new ValueAnimator[mUnits];
++        mValueAnimators = new ValueAnimator[32];
+         final boolean isVertical = mVertical;
+-        for (int i = 0; i < mUnits; i++) {
++        for (int i = 0; i < 32; i++) {
+             final int j;
+             if (isVertical) {
+                 j = i * 4;
+@@ -111,12 +112,11 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
+     }
+ 
+     private void setPortraitPoints() {
+-        float units = Float.valueOf(mUnits);
+-        float barUnit = mWidth / units;
++        float barUnit = mWidth / 32f;
+         float barWidth = barUnit * 8f / 9f;
+-        barUnit = barWidth + (barUnit - barWidth) * units / (units - 1);
++        barUnit = barWidth + (barUnit - barWidth) * 32f / 31f;
+         mPaint.setStrokeWidth(barWidth);
+-        for (int i = 0; i < mUnits; i++) {
++        for (int i = 0; i < 32; i++) {
+             mFFTPoints[i * 4] = mFFTPoints[i * 4 + 2] = i * barUnit + (barWidth / 2);
+             mFFTPoints[i * 4 + 1] = mHeight;
+             mFFTPoints[i * 4 + 3] = mHeight;
+@@ -124,12 +124,11 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
+     }
+ 
+     private void setVerticalPoints() {
+-        float units = Float.valueOf(mUnits);
+-        float barUnit = mHeight / units;
++        float barUnit = mHeight / 32f;
+         float barHeight = barUnit * 8f / 9f;
+-        barUnit = barHeight + (barUnit - barHeight) * units / (units - 1);
++        barUnit = barHeight + (barUnit - barHeight) * 32f / 31f;
+         mPaint.setStrokeWidth(barHeight);
+-        for (int i = 0; i < mUnits; i++) {
++        for (int i = 0; i < 32; i++) {
+             mFFTPoints[i * 4 + 1] = mFFTPoints[i * 4 + 3] = i * barUnit + (barHeight / 2);
+             mFFTPoints[i * 4] = mLeftInLandscape ? 0 : mWidth;
+             mFFTPoints[i * 4 + 2] = mLeftInLandscape ? 0 : mWidth;
+@@ -164,7 +163,7 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
+ 
+     @Override
+     public void onFFTUpdate(byte[] fft) {
+-        for (int i = 0; i < mUnits; i++) {
++        for (int i = 0; i < 32; i++) {
+             mValueAnimators[i].cancel();
+             rfk = fft[i * 2 + 2];
+             ifk = fft[i * 2 + 3];
+@@ -240,12 +239,6 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
+             resolver.registerContentObserver(
+                     Settings.Secure.getUriFor(Settings.Secure.PULSE_LAVALAMP_SOLID_SPEED), false, this,
+                     UserHandle.USER_ALL);
+-            resolver.registerContentObserver(
+-                    Settings.Secure.getUriFor(Settings.Secure.PULSE_SOLID_UNITS_COUNT), false, this,
+-                    UserHandle.USER_ALL);
+-            resolver.registerContentObserver(
+-                    Settings.Secure.getUriFor(Settings.Secure.PULSE_SOLID_UNITS_OPACITY), false, this,
+-                    UserHandle.USER_ALL);
+         }
+ 
+         @Override
+@@ -277,20 +270,6 @@ public class SolidLineRenderer extends Renderer implements ColorAnimator.ColorAn
+             mDbFuzzFactor = Settings.Secure.getIntForUser(
+                     resolver, Settings.Secure.PULSE_SOLID_FUDGE_FACTOR, 5,
+                     UserHandle.USER_CURRENT);
+-
+-            int oldUnits = mUnits;
+-            mUnits = Settings.Secure.getIntForUser(
+-                    resolver, Settings.Secure.PULSE_SOLID_UNITS_COUNT, 64,
+-                    UserHandle.USER_CURRENT);
+-            if (mUnits != oldUnits) {
+-                mFFTPoints = new float[mUnits * 4];
+-                onSizeChanged(0, 0, 0, 0);
+-            }
+-
+-            int solidUnitsColor = Settings.Secure.getIntForUser(
+-                    resolver, Settings.Secure.PULSE_SOLID_UNITS_OPACITY, 200,
+-                    UserHandle.USER_CURRENT);
+-            mFadePaint.setColor(Color.argb(solidUnitsColor, 255, 255, 255));
+         }
+     }
+ }
+-- 
+2.13.2
+

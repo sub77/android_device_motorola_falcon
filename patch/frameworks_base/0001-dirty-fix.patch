@@ -1,0 +1,40 @@
+From c71707142049865280946d9b054946496fcb6b16 Mon Sep 17 00:00:00 2001
+From: sub77 <sub77@ymail.com>
+Date: Sat, 8 Jul 2017 14:29:11 +0000
+Subject: [PATCH] dirty fix
+
+---
+ .../com/android/systemui/statusbar/phone/PhoneStatusBar.java   | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBar.java b/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBar.java
+index ea585416d40..ff4ed057958 100755
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBar.java
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBar.java
+@@ -3242,8 +3242,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
+ 
+         mExpandedVisible = true;
+ 
+-        if (mNavigationController.getBar() != null)
+-            mNavigationController.getBar().setSlippery(true);
++        // if (mNavigationController.getBar() != null)
++        //    mNavigationController.getBar().setSlippery(true);
+ 
+         // Expand the window to encompass the full screen in anticipation of the drag.
+         // This is only possible to do atomically because the status bar is at the top of the screen!
+@@ -3382,9 +3382,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
+ 
+         mExpandedVisible = false;
+ 
+-        if (mNavigationController.getBar() != null)
+-            mNavigationController.getBar().setSlippery(false);
+-        visibilityChanged(false);
++        // if (mNavigationController.getBar() != null)
++        //     mNavigationController.getBar().setSlippery(false);
++        // visibilityChanged(false);
+ 
+         // Shrink the window to the size of the status bar only
+         mStatusBarWindowManager.setPanelVisible(false);
+-- 
+2.13.2
+
