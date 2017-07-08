@@ -1,0 +1,14 @@
+[
+  {
+    "remote": "github",
+    "repository": "sub77/android_device_motorola_msm8226-common",
+    "target_path": "device/motorola/msm8226-common",
+    "revision": "ctr-n"
+  },
+  {
+    "remote": "github",
+    "repository": "TheMuppets/proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "revision": "cm-14.1"
+  }
+]
