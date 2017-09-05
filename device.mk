@@ -21,6 +21,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     SnapdragonCamera
 
+# Prebuilt libs
+PRODUCT_COPY_FILES += \
+    device/motorola/falcon/libs/libqsap_sdk.so:system/lib/libqsap_sdk.so \
+    device/motorola/falcon/libs/libcnefeatureconfig.so:system/lib/libcnefeatureconfig.so \
+    device/motorola/falcon/libs/libbt-vendor.so:system/vendor/lib/libbt-vendor.so
+
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init.target.rc:root/init.target.rc \
