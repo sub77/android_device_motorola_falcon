@@ -1,1 +1,6 @@
 qemu.hw.mainkeys=0
+
+# ADB
+ro.adb.secure=0
+ro.secure=0
+ro.debuggable=1

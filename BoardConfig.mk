@@ -8,7 +8,7 @@ TARGET_USE_SDCLANG := true
 
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := falcon
-TARGET_OTA_ASSERT_DEVICE := xt1031,xt1032,xt1033,xt1034,falcon_umts,falcon_umtsds,falcon_cdma,falcon_retuaws,falcon,falcon_gpe
+TARGET_OTA_ASSERT_DEVICE := none
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_falcon
