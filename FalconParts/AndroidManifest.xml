@@ -11,7 +11,7 @@
         android:targetSdkVersion="21" />
     <application
         android:label="@string/advanced_settings"
-        android:theme="@android:style/Theme.Material.Settings"
+        android:theme="@android:style/Theme.DeviceDefault.Settings"
         android:supportsRtl="true" >
         <activity
             android:name="org.omnirom.device.DeviceSettings"
