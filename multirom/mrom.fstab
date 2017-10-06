@@ -1,0 +1,20 @@
+# mount point   fstype      device  [device2]                                   [parameters]
+/boot           emmc        /dev/block/platform/msm_sdcc.1/by-name/boot
+
+/data           ext4        /dev/block/platform/msm_sdcc.1/by-name/userdata     defaults    wait,check,formattable,encryptable=/dev/block/platform/msm_sdcc.1/by-name/extra
+/data           f2fs        /dev/block/platform/msm_sdcc.1/by-name/userdata     defaults    wait,check,formattable,encryptable=/dev/block/platform/msm_sdcc.1/by-name/extra
+
+
+#--Not Needed by MultiROM--
+#--------------------------
+#/cache          ext4        /dev/block/platform/msm_sdcc.1/by-name/cache
+#/devlog         ext4        /dev/block/platform/msm_sdcc.1/by-name/devlog
+#/misc           emmc        /dev/block/platform/msm_sdcc.1/by-name/misc
+#/recovery       emmc        /dev/block/platform/msm_sdcc.1/by-name/recovery
+#/system         ext4        /dev/block/platform/msm_sdcc.1/by-name/system
+
+# USB storage
+#/usb-otg        auto        /dev/block/sda1  /dev/block/sda                    defaults    voldmanaged=usbdisk:auto
+#/usb-otg        auto        /devices/platform/msm_hsusb_host                   defaults    voldmanaged=usbdisk:auto
+#/usb-otg        auto        /devices/platform/msm_hsusb_host/usb*              defaults    voldmanaged=usbdisk:auto
+
