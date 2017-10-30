@@ -45,5 +45,13 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 694288384
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
+# Use CAF HALs
+TARGET_QCOM_DISPLAY_VARIANT := caf-msm8974
+TARGET_QCOM_MEDIA_VARIANT := caf-msm8974
+TARGET_QCOM_AUDIO_VARIANT := caf-msm8974
+
+# Use stock camera blobs
+USE_CAMERA_STUB := true
+
 # inherit from the proprietary version
 -include vendor/motorola/falcon/BoardConfigVendor.mk
