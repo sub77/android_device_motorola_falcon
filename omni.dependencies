@@ -94,5 +94,11 @@
     "repository": "android_packages_apps_FMRadio",
     "target_path": "packages/apps/FMRadio",
     "revision": "android-7.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_packages_apps_SnapdragonCamera2",
+    "target_path": "packages/apps/SnapdragonCamera2",
+    "revision": "android-8.0"
   }
 ]
