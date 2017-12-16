@@ -3,37 +3,37 @@
     "remote": "github",
     "repository": "sub77/android_device_motorola_msm8226-common",
     "target_path": "device/motorola/msm8226-common",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "github",
     "repository": "sub77/android_kernel_motorola_msm8226",
     "target_path": "kernel/motorola/msm8226",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "github",
     "repository": "sub77/proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
     "repository": "android_hardware_qcom_display-caf-msm8974",
     "target_path": "hardware/qcom/display-caf-msm8974",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
     "repository": "android_hardware_qcom_media-caf-msm8974",
     "target_path": "hardware/qcom/media-caf-msm8974",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
     "repository": "android_hardware_qcom_audio-caf-msm8974",
     "target_path": "hardware/qcom/audio-caf-msm8974",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
@@ -51,13 +51,13 @@
     "remote": "omnirom",
     "repository": "android_vendor_qcom_opensource_interfaces",
     "target_path": "vendor/qcom/opensource/interfaces",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
     "repository": "android_device_qcom_caf-sepolicy",
     "target_path": "device/qcom/sepolicy",
-    "revision": "android-8.0"
+    "revision": "android-8.1"
   },
   {
     "remote": "omnirom",
