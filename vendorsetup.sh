@@ -1,1 +1,2 @@
-add_lunch_combo lineage_falcon-userdebug
+add_lunch_combo omni_falcon-userdebug
+add_lunch_combo omni_falcon-eng

@@ -14,5 +14,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_falcon.mk \
-    $(LOCAL_DIR)/lineage_falcon.mk
+    $(LOCAL_DIR)/omni_falcon.mk
