@@ -34,15 +34,10 @@ $(call inherit-product, vendor/motorola/falcon/falcon-vendor.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := falcon
+PRODUCT_RELEASE_NAME := MOTO G
 PRODUCT_NAME := omni_falcon
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
+PRODUCT_MODEL := falcon
 
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.model
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=motorola/falcon/falcon:7.0/NPNS25.137-33-11/11:user/release-keys \
-    PRIVATE_BUILD_DESC="falcon-7.0/NPNS25.137-33-11/11:user/release-keys" \
-    PRODUCT_NAME="Moto G"
-
-
+PRODUCT_GMS_CLIENTID_BASE := android-motorola
