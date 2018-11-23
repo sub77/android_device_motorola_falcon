@@ -1,21 +1,21 @@
 [
   {
     "remote": "github",
-    "repository": "MotoDevelopment/android_hardware_qcom_display",
+    "repository": "sub77/android_hardware_qcom_display",
     "target_path": "hardware/qcom/display-caf-msm8974",
-    "revision": "lineage-16.0-caf-8974"
+    "revision": "android-9.0"
   },
   {
     "remote": "github",
-    "repository": "MotoDevelopment/android_hardware_qcom_media",
+    "repository": "sub77/android_hardware_qcom_media",
     "target_path": "hardware/qcom/media-caf-msm8974",
-    "revision": "lineage-16.0-caf-8974"
+    "revision": "android-9.0"
   },
   {
     "remote": "github",
-    "repository": "MotoDevelopment/android_hardware_qcom_audio",
+    "repository": "sub77/android_hardware_qcom_audio",
     "target_path": "hardware/qcom/audio-caf-msm8974",
-    "revision": "lineage-16.0-caf-8974"
+    "revision": "android-9.0"
   },
   {
     "remote": "omnirom",
@@ -45,7 +45,7 @@
     "remote": "omnirom",
     "repository": "android_system_qcom",
     "target_path": "system/qcom",
-    "revision": "android-8.1"
+    "revision": "android-9.0"
   },
   {
     "remote": "omnirom",
