@@ -1,0 +1,123 @@
+[
+  {
+    "remote":      "github",
+    "repository":  "sub77/android_kernel_motorola_msm8226",
+    "target_path": "kernel/motorola/msm8226",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "github",
+    "repository":  "sub77/android_device_motorola_msm8226-common",
+    "target_path": "device/motorola/msm8226-common",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "github",
+    "repository":  "sub77/proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "github",
+    "repository":  "LineageOS/android_device_qcom_sepolicy-legacy",
+    "target_path": "device/qcom/sepolicy-legacy",
+    "revision":    "lineage-16.0"
+  },
+  {
+    "remote":      "github",
+    "repository":  "LineageOS/android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings",
+    "revision":    "lineage-16.0"
+  },
+  {
+    "remote":      "github",
+    "repository":  "LineageOS/android_external_connectivity",
+    "target_path": "external/connectivity",
+    "revision":    "lineage-16.0"
+  },
+  {
+    "remote":      "github",
+    "repository":  "LineageOS/android_hardware_qcom_display",
+    "target_path": "hardware/qcom/display-caf-msm8974",
+    "revision":    "lineage-16.0-caf-8974"
+  },
+  {
+    "remote":      "github",
+    "repository":  "LineageOS/android_hardware_qcom_media",
+    "target_path": "hardware/qcom/media-caf-msm8974",
+    "revision":    "lineage-16.0-caf-8974"
+  },
+  {
+    "remote":      "github",
+    "repository":  "LineageOS/android_hardware_qcom_audio",
+    "target_path": "hardware/qcom/audio-caf-msm8974",
+    "revision":    "lineage-16.0-caf-8974"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "vendor_qcom_opensource_dataservices",
+    "target_path": "vendor/qcom/opensource/dataservices",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "android_device_qcom_caf-sepolicy",
+    "target_path": "device/qcom/sepolicy",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "android_system_qcom",
+    "target_path": "system/qcom",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "android_external_ant-wireless_antradio-library",
+    "target_path": "external/ant-wireless/antradio-library",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "android_external_ant-wireless_ant_service",
+    "target_path": "external/ant-wireless/ant/service",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "android_external_ant-wireless_ant_native",
+    "target_path": "external/ant-wireless/ant/native",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "android_packages_apps_FMRadio",
+    "target_path": "packages/apps/FMRadio",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "android_hardware_qcom_fm",
+    "target_path": "hardware/qcom/fm",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "android_hardware_qcom_gps",
+    "target_path": "hardware/qcom/gps",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "android_external_chromium-webview",
+    "target_path": "external/chromium-webview",
+    "revision":    "android-9.0"
+  },
+  {
+    "remote":      "omnirom",
+    "repository":  "android_packages_apps_SnapdragonCamera2",
+    "target_path": "packages/apps/SnapdragonCamera2",
+    "revision":    "android-9.0"
+  }
+]
+

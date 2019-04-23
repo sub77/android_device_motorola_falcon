@@ -27,17 +27,19 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <fstream>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
-#include <android-base/logging.h>
+#include <utils/Log.h>
 #include <android-base/properties.h>
-#include "vendor_init.h"
+#include <android-base/logging.h>
+
 #include "property_service.h"
-#include "log.h"
+
+namespace android {
+namespace init {
+
 using android::base::GetProperty;
 using android::init::property_set;
 
@@ -67,6 +69,7 @@ void vendor_load_properties()
     property_override("ro.product.model", "Moto G");
 
     std::string radio = GetProperty("ro.boot.radio", "");
+    LOG(INFO) << __func__ << "\n"; 
     if (radio == "0x1") {
         if (access("/dev/block/platform/msm_sdcc.1/by-name/metadata", F_OK) != -1) {
             /* xt1032 GPE */
@@ -89,6 +92,7 @@ void vendor_load_properties()
         }
     } else if (radio == "0x3") {
         std::string carrier = GetProperty("ro.boot.carrier", "");
+        LOG(INFO) << __func__ << "\n"; 
         if (carrier == "vzw") {
             property_override_dual("ro.build.description", "ro.vendor.build.description", "falcon_verizon-user 5.1 LPB23.13-33.7 7 release-keys");
             property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "motorola/falcon_verizon/falcon_cdma:5.1/LPB23.13-33.7/7:user/release-keys");
@@ -172,3 +176,6 @@ void vendor_load_properties()
 	// Init a dummy BT MAC address, will be overwritten later
     property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
 }
+
+}  // namespace init
+}  // namespace android
