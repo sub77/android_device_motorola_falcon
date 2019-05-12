@@ -96,9 +96,9 @@
     "revision":    "android-9.0"
   },
   {
-    "remote":      "omnirom",
-    "repository":  "android_external_chromium-webview",
+    "remote":      "github",
+    "repository":  "LineageOS/android_external_chromium-webview",
     "target_path": "external/chromium-webview",
-    "revision":    "android-9.0"
+    "revision":    "lineage-16.0"
   }
 ]
