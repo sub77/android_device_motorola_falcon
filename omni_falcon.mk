@@ -25,9 +25,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # Boot animation
 TARGET_BOOTANIMATION_SIZE := 720p
 
-# CarrierConfig
-PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
-
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
@@ -47,3 +44,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=motorola/falcon/falcon:7.0/NPNS25.137-33-11/11:user/release-keys \
     PRIVATE_BUILD_DESC="falcon-7.0/NPNS25.137-33-11/11:user/release-keys" \
     PRODUCT_NAME="Moto G"
+
+
