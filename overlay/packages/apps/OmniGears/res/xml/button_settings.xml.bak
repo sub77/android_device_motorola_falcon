@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  Copyright (C) 2017 The OmniROM Project
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:key="button_settings"
+        android:title="@string/button_settings_title" >
+
+    <PreferenceCategory
+        android:key="button_volume_keys"
+        android:title="@string/button_volume_keys_title" >
+
+        <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
+            android:key="volume_button_music_control"
+            android:title="@string/volume_button_music_control_title"
+            android:summary="@string/volume_button_music_control_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="button_keys"
+        android:title="@string/button_keys_title" >
+
+        <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
+            android:key="navigation_bar_show"
+            android:title="@string/navigation_bar_show_title"
+            android:summary="@string/navigation_bar_show_summary"
+            android:defaultValue="true"
+            android:persistent="false" />
+
+        <Preference
+            android:key="button_brightness"
+            android:title="@string/button_backlight_title"
+            android:summary="@string/button_backlight_summary"
+            android:persistent="false"
+            android:fragment="org.omnirom.omnigears.ButtonBrightnessSettings" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="button_power"
+        android:title="@string/global_actions_power_title" >
+
+        <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
+            android:key="advanced_reboot"
+            android:title="@string/global_actions_advanced_reboot_title"
+            android:summary="@string/global_actions_advanced_reboot_summary_new"
+            android:defaultValue="true" />
+
+        <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
+            android:key="long_press_power_torch"
+            android:title="@string/long_press_power_torch_title"
+            android:summary="@string/long_press_power_torch_summary"
+            android:defaultValue="true" />
+
+        <org.omnirom.omnilib.preference.SystemSettingSwitchPreference
+            android:key="system_proxi_check_enabled"
+            android:title="@string/system_proxi_check_enabled_title"
+            android:summary="@string/system_proxi_check_enabled_summary"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="button_other"
+        android:title="@string/button_other_title" >
+
+        <ListPreference
+            android:key="navbar_recents_style"
+            android:title="@string/navbar_recents_style_title"
+            android:entries="@array/navbar_recents_style_entries"
+            android:entryValues="@array/navbar_recents_style_values"
+            android:persistent="false"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
